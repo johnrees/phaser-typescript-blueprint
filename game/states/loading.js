@@ -8,18 +8,26 @@ var Loading = (function (_super) {
     __extends(Loading, _super);
     function Loading() {
         _super.apply(this, arguments);
-        this.ready = false;
     }
     Loading.prototype.preload = function () {
+        this.load.image('loadingBarBg', 'assets/images/loading-bar-bg.png');
+        this.load.image('loadingBar', 'assets/images/loading-bar.png');
     };
     Loading.prototype.create = function () {
         var fontStyle = {
             font: '18px VT323',
             fill: '#7edcfc'
         };
+        var loadingBarBg = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loadingBarBg');
+        loadingBarBg.anchor.setTo(0.5);
+        var loadingBar = this.game.add.sprite(this.game.world.centerX - 175, this.game.world.centerY - 16, 'loadingBar');
+        this.load.setPreloadSprite(loadingBar);
         this.loadingText = this.add.text(this.world.centerX, this.world.centerY, 'Loading...', fontStyle);
         this.loadingText.anchor.setTo(0.5);
-        this.ready = true;
+        this.game.load.onFileComplete.add(this.fileComplete, this);
+        this.game.load.onLoadComplete.add(this.loadComplete, this);
+        this.game.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
+        this.game.load.start();
     };
     Loading.prototype.fileComplete = function (progress, cacheKey, success, totalLoaded, totalFiles) {
         this.loadingText.setText('Loading... ' + progress + '%');
@@ -27,10 +35,8 @@ var Loading = (function (_super) {
             this.ready = true;
         }
     };
-    Loading.prototype.update = function () {
-        if (this.ready) {
-            this.game.state.start('Menu');
-        }
+    Loading.prototype.loadComplete = function () {
+        this.game.state.start('Menu');
     };
     return Loading;
 }(Phaser.State));

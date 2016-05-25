@@ -10,12 +10,23 @@ var Menu = (function (_super) {
         _super.apply(this, arguments);
     }
     Menu.prototype.create = function () {
-        var fontStyle = {
+        var titleFontStyle = {
             font: '18px VT323',
-            fill: '#7edcfc'
+            fill: '#FF0000'
         };
-        this.text = this.add.text(this.world.centerX, 50, 'MAIN MENU', fontStyle);
-        this.text.anchor.setTo(0.5, 0.5);
+        var titleText = this.add.text(this.world.centerX, 50, 'MAIN MENU', titleFontStyle);
+        titleText.anchor.setTo(0.5, 0.5);
+        var buttonFontStyle = {
+            font: '30px VT323',
+            fill: '#00FF00'
+        };
+        var gameButton = this.add.text(this.world.centerX, 150, 'PLAY!', buttonFontStyle);
+        gameButton.anchor.setTo(0.5, 0.5);
+        gameButton.inputEnabled = true;
+        gameButton.events.onInputDown.addOnce(this.buttonClicked, this);
+    };
+    Menu.prototype.buttonClicked = function () {
+        this.game.state.start('Game');
     };
     return Menu;
 }(Phaser.State));

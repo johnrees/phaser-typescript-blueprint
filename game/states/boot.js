@@ -29,6 +29,7 @@ var Boot = (function (_super) {
         this.preLoadingText.anchor.setTo(0.5);
         this.game.input.maxPointers = 1;
         this.game.antialias = false;
+        this.stage.disableVisibilityChange = false;
         if (!this.game.device.desktop) {
             this.scale.forceOrientation(true, false);
         }
