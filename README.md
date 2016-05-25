@@ -9,3 +9,11 @@ open [http://localhost:8080](http://localhost:8080) to see your game, code chang
 # Notes
 
 edit [src/ts/app.ts](src/ts/app.ts) for the size, position, font of the game
+
+# Deployment
+
+You can deploy to github pages using the following command, which will push your dist folder onto the gh-pages branch of your repo.
+
+`GIT_DEPLOY_DIR=dist GIT_DEPLOY_BRANCH=gh-pages ./deploy.sh`
+
+After a few minutes your game will be playable at http://USERNAME.github.io/REPOSITORY
