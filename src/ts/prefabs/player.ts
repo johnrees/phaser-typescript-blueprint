@@ -1,7 +1,7 @@
 export class Player extends Phaser.Sprite {
 
-  cursors: Object;
-  wasd: Object;
+  cursors;
+  wasd;
 
   constructor(game: Phaser.Game, x: number, y: number) {
     super(game, x, y, 'dude', 0);
