@@ -6,7 +6,9 @@ import { Menu } from './states/menu';
 
 export class App extends Phaser.Game {
   constructor() {
+
     super(160, 144, Phaser.CANVAS);
+
     this.state.add('Boot', Boot);
     this.state.add('Loading', Loading);
     this.state.add('Menu', Menu);
