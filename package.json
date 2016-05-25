@@ -16,5 +16,16 @@
     "gamedev"
   ],
   "author": "John Rees",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-typescript": "^2.13.4",
+    "phaser": "2.4.6",
+    "systemjs": "^0.19.29"
+  },
+  "devDependencies": {
+    "gulp-connect": "^4.0.0"
+  }
 }
