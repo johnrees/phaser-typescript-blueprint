@@ -20,4 +20,10 @@ After a few minutes your game will be playable at http://USERNAME.github.io/REPO
 
 # Thanks
 
-A lot of the code used in this project originated in the source files of this great template - [https://github.com/kiswa/phaser-template-tsc](https://github.com/kiswa/phaser-template-tsc)
+A lot of the code used in this project originated in the source files of this great template -
+
+[https://github.com/kiswa/phaser-template-tsc](https://github.com/kiswa/phaser-template-tsc)
+
+The deploy.sh file came from -
+
+[https://github.com/X1011/git-directory-deploy/raw/master/deploy.sh](https://github.com/X1011/git-directory-deploy/raw/master/deploy.sh)
