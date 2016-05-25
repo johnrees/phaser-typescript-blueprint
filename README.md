@@ -17,3 +17,7 @@ You can deploy to github pages using the following command, which will push your
 `GIT_DEPLOY_DIR=dist GIT_DEPLOY_BRANCH=gh-pages ./deploy.sh`
 
 After a few minutes your game will be playable at http://USERNAME.github.io/REPOSITORY
+
+# Thanks
+
+A lot of the code used in this project originated in the source files of this great template - [https://github.com/kiswa/phaser-template-tsc](https://github.com/kiswa/phaser-template-tsc)
