@@ -1,5 +1,6 @@
 export class Boot extends Phaser.State {
 
+  preLoadingText: Phaser.Text;
   fontsLoaded: boolean = false;
 
   init() {
@@ -11,11 +12,18 @@ export class Boot extends Phaser.State {
 
   preload() {
     this.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js');
-    // this.load.image('loadingBarBg', 'assets/images/loading-bar-bg.png');
-    // this.load.image('loadingBar', 'assets/images/loading-bar.png');
   }
 
   create() {
+    let fontStyle = {
+      font: '12px Courier',
+      fill: '#7edcfc'
+    };
+
+    this.preLoadingText = this.add.text(this.world.centerX,
+      this.world.centerY,'Loading fonts...', fontStyle);
+    this.preLoadingText.anchor.setTo(0.5);
+
     this.game.input.maxPointers = 1;
     this.game.antialias = false; // For pixel art
     // this.stage.disableVisibilityChange = true; // disable auto-pause on focus loss

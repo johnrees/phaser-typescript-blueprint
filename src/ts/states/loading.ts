@@ -3,6 +3,11 @@ export class Loading extends Phaser.State {
   loadingText: Phaser.Text;
   ready: boolean = false;
 
+  preload() {
+    // this.load.image('loadingBarBg', 'assets/images/loading-bar-bg.png');
+    // this.load.image('loadingBar', 'assets/images/loading-bar.png');
+  }
+
   create() {
     let fontStyle = {
       font: '18px VT323',
@@ -23,13 +28,11 @@ export class Loading extends Phaser.State {
     // this.load.setPreloadSprite(loadingBar);
 
     this.loadingText = this.add.text(this.world.centerX,
-      this.world.centerY - 30,
-      'Loading...', fontStyle);
+      this.world.centerY,'Loading...', fontStyle);
     this.loadingText.anchor.setTo(0.5);
 
     // this.game.load.onFileComplete.add(this.fileComplete, this);
     // // Load game assets here
-    // // this.game.load.image('example', 'assets/images/loading-bar.png');
     // this.game.load.start(); // Required so the onFileComplete listener is called
     this.ready = true;
   }
