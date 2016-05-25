@@ -13,7 +13,8 @@ let gulp = require('gulp'),
       ],
       tsConfig: 'src/ts/tsconfig.json',
       ts: 'src/**/*.ts',
-      html: 'src/**/*.html'
+      html: 'src/**/*.html',
+      images: 'src/assets/images/**/*.png'
     };
 
 gulp.task('clean', () => del('dist/'));
@@ -23,6 +24,13 @@ gulp.task('connect', function() {
     root: 'dist',
     livereload: true
   });
+});
+
+gulp.task('images', () => {
+  return gulp.src(paths.images)
+    // .pipe(imageMin())
+    .pipe(gulp.dest('dist/assets/images/'))
+    .pipe(connect.reload());
 });
 
 gulp.task('html', () => {
@@ -48,10 +56,12 @@ gulp.task('tsc', () => {
 gulp.task('watch', () => {
   let watchTs = gulp.watch(paths.ts, ['tsc']),
     watchHtml   = gulp.watch(paths.html, ['html']),
+    watchImages = gulp.watch(paths.images, ['images']),
     onChanged = (event) => console.info(event.path + ' was ' + event.type + '. Running tasks...');
 
   watchTs.on('change', onChanged);
   watchHtml.on('change', onChanged);
+  watchImages.on('change', onChanged);
 });
 
 gulp.task('default', [ 'connect', 'vendor', 'watch' ]);
