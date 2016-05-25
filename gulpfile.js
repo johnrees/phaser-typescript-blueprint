@@ -34,8 +34,7 @@ gulp.task('html', () => {
 gulp.task('vendor', () => {
   return gulp.src(paths.vendor)
     .pipe(concat('vendor.js'))
-    .pipe(gulp.dest('dist/js/'))
-    .pipe(connect.reload());
+    .pipe(gulp.dest('dist/js/'));
 });
 
 gulp.task('tsc', () => {
@@ -55,4 +54,4 @@ gulp.task('watch', () => {
   watchHtml.on('change', onChanged);
 });
 
-gulp.task('default', [ 'connect', 'watch', 'vendor' ]);
+gulp.task('default', [ 'connect', 'vendor', 'watch' ]);
