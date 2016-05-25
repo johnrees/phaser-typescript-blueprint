@@ -11,8 +11,12 @@ var Game = (function (_super) {
         _super.apply(this, arguments);
     }
     Game.prototype.create = function () {
+        this.game.time.advancedTiming = true;
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.player = new player_1.Player(this.game, this.world.centerX, this.world.centerY);
+    };
+    Game.prototype.render = function () {
+        this.game.debug.text(this.game.time.fps.toString(), 10, 20, "#ffffff");
     };
     return Game;
 }(Phaser.State));
