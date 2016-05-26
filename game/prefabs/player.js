@@ -8,6 +8,7 @@ var Player = (function (_super) {
     __extends(Player, _super);
     function Player(game, x, y, platformsLayer) {
         _super.call(this, game, x, y, 'dude', 0);
+        this.speed = 180;
         game.physics.arcade.enableBody(this);
         game.add.existing(this);
         this.platformsLayer = platformsLayer;
@@ -34,11 +35,11 @@ var Player = (function (_super) {
     Player.prototype.update = function () {
         this.game.physics.arcade.collide(this, this.platformsLayer);
         if (this.cursors.left.isDown || this.wasd.left.isDown) {
-            this.body.velocity.x = -150;
+            this.body.velocity.x = -this.speed;
             this.animations.play('left');
         }
         else if (this.cursors.right.isDown || this.wasd.right.isDown) {
-            this.body.velocity.x = 150;
+            this.body.velocity.x = this.speed;
             this.animations.play('right');
         }
         else {
