@@ -6,10 +6,11 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Player = (function (_super) {
     __extends(Player, _super);
-    function Player(game, x, y) {
+    function Player(game, x, y, platformsLayer) {
         _super.call(this, game, x, y, 'dude', 0);
         game.physics.arcade.enableBody(this);
         game.add.existing(this);
+        this.platformsLayer = platformsLayer;
         this.anchor.set(0.5, 0.5);
         this.animations.add('left', [0, 1, 2, 3], 10, true);
         this.animations.add('right', [5, 6, 7, 8], 10, true);
@@ -18,10 +19,20 @@ var Player = (function (_super) {
             up: this.game.input.keyboard.addKey(Phaser.Keyboard.W),
             left: this.game.input.keyboard.addKey(Phaser.Keyboard.A),
             down: this.game.input.keyboard.addKey(Phaser.Keyboard.S),
-            right: this.game.input.keyboard.addKey(Phaser.Keyboard.D)
+            right: this.game.input.keyboard.addKey(Phaser.Keyboard.D),
+            space: this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
         };
+        this.cursors.up.onDown.add(this.jump, this);
+        this.wasd.up.onDown.add(this.jump, this);
+        this.wasd.space.onDown.add(this.jump, this);
     }
+    Player.prototype.jump = function () {
+        if (this.body.blocked.down || this.body.touching.down) {
+            this.body.velocity.y = -350;
+        }
+    };
     Player.prototype.update = function () {
+        this.game.physics.arcade.collide(this, this.platformsLayer);
         if (this.cursors.left.isDown || this.wasd.left.isDown) {
             this.body.velocity.x = -150;
             this.animations.play('left');

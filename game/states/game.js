@@ -13,7 +13,14 @@ var Game = (function (_super) {
     Game.prototype.create = function () {
         this.game.time.advancedTiming = true;
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
-        this.player = new player_1.Player(this.game, this.world.centerX, this.world.centerY);
+        this.game.physics.arcade.gravity.y = 800;
+        var map = this.game.add.tilemap('map');
+        map.addTilesetImage('tiles', 'tiles');
+        var platformsLayer = map.createLayer('platforms');
+        map.setCollision(1, true, platformsLayer);
+        platformsLayer.resizeWorld();
+        this.player = new player_1.Player(this.game, this.world.centerX, this.world.centerY, platformsLayer);
+        this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_PLATFORMER);
     };
     Game.prototype.render = function () {
         this.game.debug.text(this.game.time.fps.toString(), 10, 20, "#ffffff");

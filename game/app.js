@@ -11,7 +11,7 @@ var game_1 = require('./states/game');
 var App = (function (_super) {
     __extends(App, _super);
     function App() {
-        _super.call(this, 400, 300, Phaser.CANVAS);
+        _super.call(this, 200, 200, Phaser.CANVAS);
         this.state.add('Boot', boot_1.Boot);
         this.state.add('Loading', loading_1.Loading);
         this.state.add('Menu', menu_1.Menu);
