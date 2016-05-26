@@ -3,6 +3,7 @@ export class Player extends Phaser.Sprite {
   cursors;
   wasd;
   platformsLayer;
+  speed: number = 180;
 
   constructor(game: Phaser.Game, x: number, y: number, platformsLayer) {
     super(game, x, y, 'dude', 0);
@@ -39,10 +40,10 @@ export class Player extends Phaser.Sprite {
     this.game.physics.arcade.collide(this, this.platformsLayer);
 
     if (this.cursors.left.isDown || this.wasd.left.isDown) {
-      this.body.velocity.x = -150;
+      this.body.velocity.x = -this.speed;
       this.animations.play('left');
     } else if (this.cursors.right.isDown || this.wasd.right.isDown) {
-      this.body.velocity.x = 150;
+      this.body.velocity.x = this.speed;
       this.animations.play('right');
     } else {
       this.body.velocity.x = 0;
