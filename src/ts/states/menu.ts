@@ -4,7 +4,7 @@ export class Menu extends Phaser.State {
 
     let titleFontStyle = {
       font: '18px VT323',
-      fill: '#FF0000'
+      fill: '#83769C'
     };
 
     let titleText = this.add.text(this.world.centerX, 50, 'MAIN MENU', titleFontStyle);
@@ -12,7 +12,7 @@ export class Menu extends Phaser.State {
 
     let buttonFontStyle = {
       font: '30px VT323',
-      fill: '#00FF00'
+      fill: '#00E232'
     };
 
     let gameButton = this.add.text(this.world.centerX, 150, 'PLAY!', buttonFontStyle);
