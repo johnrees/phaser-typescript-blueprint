@@ -36,19 +36,31 @@ export class Player extends Phaser.Sprite {
     }
   }
 
+  moveLeft() {
+    this.body.velocity.x = -this.speed;
+    this.animations.play('left');
+  }
+
+  moveRight() {
+    this.body.velocity.x = this.speed;
+    this.animations.play('right');
+  }
+
+  stop() {
+    this.body.velocity.x = 0;
+    this.animations.stop();
+    this.frame = 4;
+  }
+
   update() {
     this.game.physics.arcade.collide(this, this.platformsLayer);
 
     if (this.cursors.left.isDown || this.wasd.left.isDown) {
-      this.body.velocity.x = -this.speed;
-      this.animations.play('left');
+      this.moveLeft();
     } else if (this.cursors.right.isDown || this.wasd.right.isDown) {
-      this.body.velocity.x = this.speed;
-      this.animations.play('right');
+      this.moveRight();
     } else {
-      this.body.velocity.x = 0;
-      this.animations.stop();
-      this.frame = 4;
+      this.stop();
     }
 
   }
