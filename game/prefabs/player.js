@@ -32,20 +32,29 @@ var Player = (function (_super) {
             this.body.velocity.y = -350;
         }
     };
+    Player.prototype.moveLeft = function () {
+        this.body.velocity.x = -this.speed;
+        this.animations.play('left');
+    };
+    Player.prototype.moveRight = function () {
+        this.body.velocity.x = this.speed;
+        this.animations.play('right');
+    };
+    Player.prototype.stop = function () {
+        this.body.velocity.x = 0;
+        this.animations.stop();
+        this.frame = 4;
+    };
     Player.prototype.update = function () {
         this.game.physics.arcade.collide(this, this.platformsLayer);
         if (this.cursors.left.isDown || this.wasd.left.isDown) {
-            this.body.velocity.x = -this.speed;
-            this.animations.play('left');
+            this.moveLeft();
         }
         else if (this.cursors.right.isDown || this.wasd.right.isDown) {
-            this.body.velocity.x = this.speed;
-            this.animations.play('right');
+            this.moveRight();
         }
         else {
-            this.body.velocity.x = 0;
-            this.animations.stop();
-            this.frame = 4;
+            this.stop();
         }
     };
     return Player;

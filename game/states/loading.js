@@ -33,9 +33,6 @@ var Loading = (function (_super) {
     };
     Loading.prototype.fileComplete = function (progress, cacheKey, success, totalLoaded, totalFiles) {
         this.loadingText.setText('Loading... ' + progress + '%');
-        if (progress === 100) {
-            this.ready = true;
-        }
     };
     Loading.prototype.loadComplete = function () {
         this.game.state.start('Menu');
