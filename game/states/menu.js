@@ -12,13 +12,13 @@ var Menu = (function (_super) {
     Menu.prototype.create = function () {
         var titleFontStyle = {
             font: '18px VT323',
-            fill: '#FF0000'
+            fill: '#83769C'
         };
         var titleText = this.add.text(this.world.centerX, 50, 'MAIN MENU', titleFontStyle);
         titleText.anchor.setTo(0.5, 0.5);
         var buttonFontStyle = {
             font: '30px VT323',
-            fill: '#00FF00'
+            fill: '#00E232'
         };
         var gameButton = this.add.text(this.world.centerX, 150, 'PLAY!', buttonFontStyle);
         gameButton.anchor.setTo(0.5, 0.5);
