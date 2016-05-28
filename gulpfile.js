@@ -81,4 +81,4 @@ gulp.task('watch', () => {
   watchImages.on('change', onChanged);
 });
 
-gulp.task('default', [ 'connect', 'vendor', 'watch' ]);
+gulp.task('default', [ 'images', 'html', 'tilemaps', 'tsc', 'vendor', 'connect', 'watch' ]);
